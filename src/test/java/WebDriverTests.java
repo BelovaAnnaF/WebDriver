@@ -7,9 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class WebDriverTests {
 
-    Logger logger = LogManager.getLogger(WebDriverTests.class);
+
     private WebDriver driver;
 
     @BeforeEach
@@ -24,8 +26,8 @@ public class WebDriverTests {
 //    Открыть Chrome в headless режиме
 //    Перейти на https://duckduckgo.com/
         driver.get("https://duckduckgo.com/");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        driver.findElement(By.ByCssSelector("search__input--adv"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        driver.findElement(By.ByCssSelector("search__input--adv"));
 //    В поисковую строку ввести ОТУС
 //    Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
 
@@ -44,7 +46,7 @@ public class WebDriverTests {
 //3)
     @Test
     public void testCookieInLogFile() {
-
+    Logger logger = LogManager.getLogger(WebDriverTests.this);
 //    Открыть Chrome в режиме полного экрана
 //    Перейти на https://otus.ru
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
