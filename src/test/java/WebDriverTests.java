@@ -2,8 +2,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverTests {
 
@@ -22,6 +24,8 @@ public class WebDriverTests {
 //    Открыть Chrome в headless режиме
 //    Перейти на https://duckduckgo.com/
         driver.get("https://duckduckgo.com/");
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        driver.findElement(By.ByCssSelector("search__input--adv"));
 //    В поисковую строку ввести ОТУС
 //    Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
 
@@ -47,6 +51,9 @@ public class WebDriverTests {
 //    Вывести в лог все cookie
     }
 
-
+    @AfterEach
+    public void closeBrouser(){
+        driver.quit();
+    }
 
 }
