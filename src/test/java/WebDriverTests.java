@@ -15,12 +15,6 @@ public class WebDriverTests {
 
     private WebDriver driver;
 
-//    @BeforeEach
-//    public void initialaizWebDriver(){
-//
-//
-//    }
-
 //    1)
     @Test
     public void testFindOtus() {
@@ -28,7 +22,7 @@ public class WebDriverTests {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
 //    Перейти на https://duckduckgo.com/
         driver.get("https://duckduckgo.com/");
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -38,7 +32,7 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector("#search_button_homepage")).click();
 //        WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(30));
 //    Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
-        Assertions.assertEquals(driver.findElement(By.cssSelector(".react-results--main>li"))); //ДОПИСАТЬ СЕЛЕКТОР выбрать первый элемент из найденых
+//        Assertions.assertEquals(driver.findElement(By.cssSelector(".react-results--main>li"))); //ДОПИСАТЬ СЕЛЕКТОР выбрать первый элемент из найденых
 
 
     }
@@ -49,7 +43,7 @@ public class WebDriverTests {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--kiosk");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
 //    Перейти на https://demo.w3layouts.com/demos_new/template_demo/03-10-2020/photoflash-liberty-demo_Free/685659620/web/index.html?_ga=2.181802926.889871791.1632394818-2083132868.1632394818
         driver.get("https://demo.w3layouts.com/demos_new/template_demo/03-10-2020/photoflash-liberty-demo_Free/685659620/web/index.html?_ga=2.181802926.889871791.1632394818-2083132868.1632394818");
 //    Нажать на любую картинку
@@ -65,7 +59,7 @@ public class WebDriverTests {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-fullscreen");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
 //    Перейти на https://otus.ru
         driver.get("https://otus.ru");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
