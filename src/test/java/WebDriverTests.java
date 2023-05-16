@@ -32,9 +32,11 @@ public class WebDriverTests {
 //    Перейти на https://duckduckgo.com/
         driver.get("https://duckduckgo.com/");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));//реализовать ожидание загрузки страницы
-        driver.findElement(By.className(".search__input--adv"));
-        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 //    В поисковую строку ввести ОТУС
+        driver.findElement(By.cssSelector("#search_form_input_homepage"));//.sendKeys("OTUS");
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+        driver.findElement(By.cssSelector("#search_button_homepage")).click();
+        WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(30));
 //    Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
 
 
