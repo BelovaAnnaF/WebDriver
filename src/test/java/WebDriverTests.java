@@ -38,7 +38,7 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector("#search_button_homepage")).click();
 //        WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(30));
 //    Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
-        Assertions.assertEquals(driver.findElement(By.cssSelector(".react-results--main>li"))); //ДОПИСАТЬ СЕЛЕКТОР
+        Assertions.assertEquals(driver.findElement(By.cssSelector(".react-results--main>li"))); //ДОПИСАТЬ СЕЛЕКТОР выбрать первый элемент из найденых
 
 
     }
