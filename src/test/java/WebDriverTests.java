@@ -73,7 +73,7 @@ public class WebDriverTests {
 
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
         driver.findElement(By.cssSelector(".header3__button-sign-in")).click();//нажать кнопку войти
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("body.body-header3.overflow-hidden"))));//проверить, что открылось окно ввода логина/пароля
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".body-header3.overflow-hidden"))));//проверить, что открылось окно ввода логина/пароля
 
 //ввести логин пароль
         driver.findElement(By.cssSelector("input.js-email-input[placeholder='Электронная почта']")).sendKeys("dafome4086@aicogz.com");//login
