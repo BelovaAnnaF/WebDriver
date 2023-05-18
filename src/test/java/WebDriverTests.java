@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class WebDriverTests {
 
 
@@ -32,10 +34,8 @@ public class WebDriverTests {
 //    Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
         driver.findElement(By.cssSelector(".react-results--main>li:first-child")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        driver.findElement(By.cssSelector("head>[content *= 'Онлайн‑курсы для профессионалов']"));
-
-
-
+//        driver.findElement(By.cssSelector("head>[content *= 'Онлайн‑курсы для профессионалов']"));
+        assertEquals("Онлайн‑курсы для профессионалов, дистанционное обучение", driver.getTitle());
     }
 //2)
     @Test
