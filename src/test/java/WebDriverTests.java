@@ -48,6 +48,7 @@ public class WebDriverTests {
 //    Перейти на https://demo.w3layouts.com/demos_new/template_demo/03-10-2020/photoflash-liberty-demo_Free/685659620/web/index.html?_ga=2.181802926.889871791.1632394818-2083132868.1632394818
         driver.get("https://demo.w3layouts.com/demos_new/template_demo/03-10-2020/photoflash-liberty-demo_Free/685659620/web/index.html?_ga=2.181802926.889871791.1632394818-2083132868.1632394818");
 //    Нажать на любую картинку
+        driver.findElement(By.cssSelector(".content-overlay")).click();
 //    Проверить что картинка открылась в модальном окне
 
     }
