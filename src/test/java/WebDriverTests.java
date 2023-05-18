@@ -19,6 +19,7 @@ public class WebDriverTests {
 
 
     private WebDriver driver;
+    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 //    1)
     @Test
@@ -53,7 +54,6 @@ public class WebDriverTests {
 //    Нажать на любую картинку
         driver.findElement(By.cssSelector(".content-overlay")).click();
 //    Проверить что картинка открылась в модальном окне
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.pp_overlay"))));
     }
 
@@ -69,8 +69,13 @@ public class WebDriverTests {
         driver = new ChromeDriver(options);
 //    Перейти на https://otus.ru
         driver.get("https://otus.ru");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".title-new__text"))));//проверить, что загрузилась страница
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
+        wait.until(ExpectedConditions.);//проверить, что не открыто модальное окно Войти
+        driver. ;//нажать кнопку войти
+        wait.until(ExpectedConditions.);//проверить, что открылось можадьное окно ввода логина/пароля
+        //ввести логин пароль
+
 //    Вывести в лог все cookie
     }
 
