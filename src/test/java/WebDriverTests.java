@@ -88,10 +88,7 @@ public class WebDriverTests {
 
     @AfterEach
     public void closeBrouser(){
-        if(driver != null){
-            driver.close();
-            driver.quit();
-        }
+        driver.quit();
     }
 
 }
