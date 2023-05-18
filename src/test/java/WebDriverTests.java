@@ -73,7 +73,9 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector(".header3__button-sign-in")).click();//нажать кнопку войти
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".js-login"))));//проверить, что открылось модальное окно ввода логина/пароля
     //ввести логин пароль
-
+        driver.findElement(By.cssSelector("")).sendKeys("");//login
+        driver.findElement(By.cssSelector("")).sendKeys("");//pwd
+        driver.findElement(By.cssSelector("")).click();//нажать войти
 //    Вывести в лог все cookie
     }
 
