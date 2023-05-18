@@ -59,7 +59,7 @@ public class WebDriverTests {
 //3)
     @Test
     public void testCookieInLogFile() {
-      Logger logger = LogManager.getLogger(WebDriverTests.class);
+
 //    Открыть Chrome в режиме полного экрана
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -73,7 +73,7 @@ public class WebDriverTests {
 
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
         driver.findElement(By.cssSelector(".header3__button-sign-in")).click();//нажать кнопку войти
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".js-login"))));//проверить, что открылось модальное окно ввода логина/пароля
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("body.body-header3.overflow-hidden"))));//проверить, что открылось окно ввода логина/пароля
 
 //ввести логин пароль
         driver.findElement(By.cssSelector("input.js-email-input[placeholder='Электронная почта']")).sendKeys("dafome4086@aicogz.com");//login
@@ -81,6 +81,9 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector(".new-input-line_relative>button.new-button_md")).click();//нажать войти
 
 //    Вывести в лог все cookie
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".header3__user-info-name"))));
+        Logger logger = LogManager.getLogger(WebDriverTests.class);
+//        logger.
     }
 
     @AfterEach
