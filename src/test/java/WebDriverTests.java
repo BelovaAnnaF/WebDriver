@@ -69,7 +69,7 @@ public class WebDriverTests {
 
 //    Перейти на https://otus.ru
         driver.get("https://otus.ru");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
         driver.findElement(By.cssSelector(".header3__button-sign-in")).click();//нажать кнопку войти
