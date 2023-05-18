@@ -66,16 +66,20 @@ public class WebDriverTests {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--start-fullscreen");
         driver = new ChromeDriver(options);
+
 //    Перейти на https://otus.ru
         driver.get("https://otus.ru");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
         driver.findElement(By.cssSelector(".header3__button-sign-in")).click();//нажать кнопку войти
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".js-login"))));//проверить, что открылось модальное окно ввода логина/пароля
-    //ввести логин пароль
-        driver.findElement(By.cssSelector("")).sendKeys("");//login
-        driver.findElement(By.cssSelector("")).sendKeys("");//pwd
-        driver.findElement(By.cssSelector("")).click();//нажать войти
+
+//ввести логин пароль
+        driver.findElement(By.cssSelector("input.js-email-input[placeholder='Электронная почта']")).sendKeys("dafome4086@aicogz.com");//login
+        driver.findElement(By.cssSelector("input.js-psw-input[placeholder='Введите пароль']")).sendKeys("OtusTest12#");//pwd
+        driver.findElement(By.cssSelector(".new-input-line_relative>button.new-button_md")).click();//нажать войти
+
 //    Вывести в лог все cookie
     }
 
