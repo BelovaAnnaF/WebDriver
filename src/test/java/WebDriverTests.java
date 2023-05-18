@@ -35,6 +35,7 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector("head>[content *= 'Онлайн‑курсы для профессионалов']"));
 
 
+
     }
 //2)
     @Test
