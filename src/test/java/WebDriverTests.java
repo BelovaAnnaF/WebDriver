@@ -19,9 +19,8 @@ public class WebDriverTests {
 
 
     private WebDriver driver;
-    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-//    1)
+    //    1)
     @Test
     public void testFindOtus() {
 //    Открыть Chrome в headless режиме
@@ -32,7 +31,6 @@ public class WebDriverTests {
         driver = new ChromeDriver(options);
 //    Перейти на https://duckduckgo.com/
         driver.get("https://duckduckgo.com/");
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 //    В поисковую строку ввести ОТУС
         driver.findElement(By.cssSelector("#search_form_input_homepage")).sendKeys("ОТУС");
         driver.findElement(By.cssSelector("#search_button_homepage")).click();
@@ -40,7 +38,7 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector(".react-results--main>li:first-child")).click();
         assertEquals("Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям", driver.getTitle());
     }
-//2)
+    //2)
     @Test
     public void testOpenImage(){
 //    Открыть Chrome в режиме киоска
@@ -54,13 +52,14 @@ public class WebDriverTests {
 //    Нажать на любую картинку
         driver.findElement(By.cssSelector(".content-overlay")).click();
 //    Проверить что картинка открылась в модальном окне
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.pp_overlay"))));
     }
 
 //3)
     @Test
     public void testCookieInLogFile() {
-    Logger logger = LogManager.getLogger(WebDriverTests.class);
+      Logger logger = LogManager.getLogger(WebDriverTests.class);
 //    Открыть Chrome в режиме полного экрана
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -69,12 +68,11 @@ public class WebDriverTests {
         driver = new ChromeDriver(options);
 //    Перейти на https://otus.ru
         driver.get("https://otus.ru");
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".title-new__text"))));//проверить, что загрузилась страница
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
-        wait.until(ExpectedConditions.);//проверить, что не открыто модальное окно Войти
-        driver. ;//нажать кнопку войти
-        wait.until(ExpectedConditions.);//проверить, что открылось можадьное окно ввода логина/пароля
-        //ввести логин пароль
+        driver.findElement(By.cssSelector(".header3__button-sign-in")).click();//нажать кнопку войти
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".js-login"))));//проверить, что открылось модальное окно ввода логина/пароля
+    //ввести логин пароль
 
 //    Вывести в лог все cookie
     }
