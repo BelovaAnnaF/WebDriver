@@ -28,11 +28,11 @@ public class WebDriverTests {
 //        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 //    В поисковую строку ввести ОТУС
         driver.findElement(By.cssSelector("#search_form_input_homepage")).sendKeys("ОТУС");
-//        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.findElement(By.cssSelector("#search_button_homepage")).click();
-//        WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(30));
 //    Проверить что в поисковой выдаче первый результат Онлайн‑курсы для профессионалов, дистанционное обучение
-        driver.findElement(By.cssSelector(".react-results--main>li:first-child  div:nth-of-type(2) span"));
+        driver.findElement(By.cssSelector(".react-results--main>li:first-child")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        driver.findElement(By.cssSelector("head>[content *= 'Онлайн‑курсы для профессионалов']"));
 
 
     }
