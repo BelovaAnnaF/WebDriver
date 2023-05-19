@@ -82,8 +82,7 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector(".new-input-line_relative>button.new-button_md")).click();//нажать войти
 
 //    Вывести в лог все cookie
-        driver.findElement(By.cssSelector(".header3__user-info-name"));
-//        Logger logger = LogManager.getLogger();
+        driver.findElement(By.cssSelector(".header3__user-info-name"));//проверяем, что вход успешный
         driver.manage().addCookie(new Cookie("Key","value"));
         Set<Cookie> cookies = driver.manage().getCookies();
         Logger logger = LogManager.getLogger(cookies);
