@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -70,20 +72,21 @@ public class WebDriverTests {
 
 //    Перейти на https://otus.ru
         driver.get("https://otus.ru");
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 //    Авторизоваться под каким-нибудь тестовым пользователем(можно создать нового)
         driver.findElement(By.cssSelector(".header3__button-sign-in")).click();//нажать кнопку войти
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".body-header3.overflow-hidden"))));//проверить, что открылось окно ввода логина/пароля
+//проверить, что открылось окно ввода логина/пароля
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(), 'Войдите в свой аккаунт')]")));
 
 //ввести логин пароль
         driver.findElement(By.cssSelector("input.js-email-input[placeholder='Электронная почта']")).sendKeys("dafome4086@aicogz.com");//login
         driver.findElement(By.cssSelector("input.js-psw-input[placeholder='Введите пароль']")).sendKeys("OtusTest12#");//pwd
         driver.findElement(By.cssSelector(".new-input-line_relative>button.new-button_md")).click();//нажать войти
+//проверяем, что вход успешный
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".header3__user-info-name")));
 
 //    Вывести в лог все cookie
-        driver.findElement(By.cssSelector(".header3__user-info-name"));//проверяем, что вход успешный
         driver.manage().addCookie(new Cookie("Key","value"));
         Set<Cookie> cookies = driver.manage().getCookies();
         Logger logger = LogManager.getLogger(cookies);
