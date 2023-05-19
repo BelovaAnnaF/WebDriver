@@ -1,17 +1,18 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -81,9 +82,11 @@ public class WebDriverTests {
         driver.findElement(By.cssSelector(".new-input-line_relative>button.new-button_md")).click();//нажать войти
 
 //    Вывести в лог все cookie
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".header3__user-info-name"))));
-        Logger logger = LogManager.getLogger(WebDriverTests.class);
-//        logger.
+        driver.findElement(By.cssSelector(".header3__user-info-name"));
+//        Logger logger = LogManager.getLogger();
+        driver.manage().addCookie(new Cookie("Key","value"));
+        Set<Cookie> cookies = driver.manage().getCookies();
+        Logger logger = LogManager.getLogger(cookies);
     }
 
     @AfterEach
